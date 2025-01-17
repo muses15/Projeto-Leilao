@@ -193,7 +193,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         // Conectando ao banco de dados
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11", "root", "frota");
         String sql = "INSERT INTO produtos (nome, valor, status) VALUES (?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
+        PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, nomeProduto);
         stmt.setDouble(2, valorProduto);
         stmt.executeUpdate();
