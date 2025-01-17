@@ -1,10 +1,4 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-
-
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,11 +16,10 @@ import javax.swing.JOptionPane;
 
 public class conectaDAO {
 
-    static com.mysql.jdbc.Connection getConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    public Connection connectDB() {
-        Connection conn = null;
+    
+    public Connection connectDB() throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/u11?user=root&password=frota&useSSL=false");
+
 
         try {
             // URL de conexão

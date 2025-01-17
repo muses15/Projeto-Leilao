@@ -1,6 +1,4 @@
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /*
@@ -40,7 +38,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btnCadastrar = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,14 +80,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
             }
         });
 
-        salvar.setBackground(new java.awt.Color(153, 255, 255));
-        salvar.setText("Salvar");
-        salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +111,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
                         .addGap(154, 154, 154)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(btnCadastrar)
-                        .addGap(42, 42, 42)
-                        .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(218, 218, 218)
+                        .addComponent(btnCadastrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,11 +132,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(valorProdutoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar)
-                    .addComponent(salvar))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrar)
+                .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(btnProdutos)
@@ -182,29 +167,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
         listagemVIEW listagem = new listagemVIEW(); 
         listagem.setVisible(true);
     }//GEN-LAST:event_btnProdutosActionPerformed
-
-    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
-        // TODO add your handling code here:
-            try {
-        // Pegando os dados dos campos
-        String nomeProduto = nomeProdutoField.getText();
-        double valorProduto = Double.parseDouble(valorProdutoField.getText());
-
-        // Conectando ao banco de dados
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11", "root", "frota");
-        String sql = "INSERT INTO produtos (nome, valor, status) VALUES (?, ?)";
-        PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
-        stmt.setString(1, nomeProduto);
-        stmt.setDouble(2, valorProduto);
-        stmt.executeUpdate();
-
-        // Mostrando mensagem de sucesso
-        JOptionPane.showMessageDialog(this, "Produto salvo com sucesso!");
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
-    }
-        
-    }//GEN-LAST:event_salvarActionPerformed
 
     private void valorProdutoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorProdutoFieldActionPerformed
         // TODO add your handling code here:
@@ -255,7 +217,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nomeProdutoField;
-    private javax.swing.JButton salvar;
     private javax.swing.JTextField valorProdutoField;
     // End of variables declaration//GEN-END:variables
 }

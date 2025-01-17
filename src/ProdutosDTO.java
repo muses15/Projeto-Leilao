@@ -9,43 +9,51 @@
  * @author Adm
  */
 public class ProdutosDTO {
-    private Integer id;
+    private long id;
     private String nome;
-    private Integer valor;
+    private int valor;
     private String status;
 
-    public Integer getId() {
+    // Construtores
+    public ProdutosDTO() {}
+
+    public ProdutosDTO(long id, String nome, int valor, String status) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+        this.status = status;
+    }
+
+    // Getters e Setters
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public Integer getValor() {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getValor() {
         return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setValor(Integer valor) {
-        this.valor = valor;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
-    
-}   
+}
